@@ -11,8 +11,10 @@ function App() {
     duration: 10,
   });
 
+  const isValidInput = userInput.duration >= 1;
+
   const handleChange = (e) => {
-    setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    setUserInput({ ...userInput, [e.target.name]: +e.target.value });
   };
 
   // function handleChange(event){
@@ -28,7 +30,8 @@ function App() {
     <>
       <Header />
       <UserInput onChange={handleChange} userInput={userInput}/>
-      <Results userInput={userInput}/>
+      {!isValidInput && <p className="center">Please input a valid input data</p>}
+      {isValidInput && <Results userInput={userInput}/>}
     </>
   );
 }
