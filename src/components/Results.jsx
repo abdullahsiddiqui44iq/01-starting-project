@@ -19,13 +19,14 @@ export default function Results({ userInput }) {
         {calculateInvestmentResults(userInput).map((result, index) => {
           const totalInterest = result.valueEndOfYear - result.annualInvestment * result.year - initialInvestment;
           const totalAmountInvested = result.valueEndOfYear - totalInterest;
+          // console.log(totalAmountInvested);
           return (
             <tr key={index}>
               <td>{result.year}</td>
               <td>{formatter.format(result.valueEndOfYear)}</td>
               <td>{formatter.format(result.interest)}</td>
               <td>{formatter.format(totalInterest)}</td>
-              <td>{formatter.format(result.totalAmountInvested)}</td>
+              <td>{formatter.format(totalAmountInvested)}</td>
             </tr>
           );
         })}
